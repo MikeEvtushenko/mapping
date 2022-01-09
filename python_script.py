@@ -39,5 +39,9 @@ for latitude, longitude, elevation, name in zip(lat, lon, elev, name):
     fg.add_child(
         folium.CircleMarker(location=[latitude, longitude], radius=5, popup=folium.Popup(iframe),
                             fill_color=assess_elevation(elevation), color=None, fill_opacity=0.7))
+
+
+fg.add_child(folium.GeoJson(data=(open("world.json", "r", encoding="utf-8-sig").read())))
+
 map_1.add_child(fg)
 map_1.save("Map1.html")
